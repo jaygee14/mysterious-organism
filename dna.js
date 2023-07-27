@@ -1,4 +1,4 @@
-/* author: Jared Garcia
+/* author: Jaygee
    For: codecademy prokect 'Mysterious Organism'
 */
 
@@ -18,27 +18,26 @@ const mockUpStrand = () => {
 };
 
   const pAquerFactory = (_specimenNum, _dna) => {
+   //returns a new object
     return {
       _specimenNum,
       _dna,
 
+      // takes in a set of dna, picks a random strand, changes it using returnRandBase() and returns the changed set
       mutate() {
         randomPick = Math.floor(Math.random() * 15)
         const strand = this._dna[randomPick]
         let newStrand = strand
-
-        console.log(this._dna)
 
         while (strand === newStrand) {
           newStrand = returnRandBase()
         }
 
         this._dna[randomPick] = newStrand;
-        console.log(randomPick)
-
         return this._dna
       },
-
+      
+       //compares two sets of dna and returns how closely identical the two sets are in a percentage
       compareDNA(strand) {
         
         sameDNA = []
@@ -52,6 +51,7 @@ const mockUpStrand = () => {
         console.log(`The two specimen share %${percentageDNA} of their dna.`)
       },
 
+      // takes a set of DNA and finds out what percentage of DNA are C and G strands. Returns a boolean if subject is likely to survive
       willLikelySurvive(){
         cGPercentage = []
         for (item of this._dna) {
@@ -77,7 +77,7 @@ const mockUpStrand = () => {
 //console.log(squirrel.mutate())
 
 willSurvive = []
-count = 2
+count = 0
 
 while (willSurvive.length < 30) {
   let kettle = pAquerFactory(count, mockUpStrand());
