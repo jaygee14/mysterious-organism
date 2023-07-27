@@ -27,9 +27,7 @@ const pAquerFactory = (_specimenNum, _dna) => {
     mutate() {
       randomPick = Math.floor(Math.random() * 15)
       let newStrand = this._dna[randomPick]
-
-      console.log(randomPick)
-      console.log(this._dna)
+       
       while (this._dna[randomPick] === newStrand) {
         newStrand = returnRandBase()
       }
