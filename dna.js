@@ -76,6 +76,8 @@ const mockUpStrand = () => {
 
 //console.log(squirrel.mutate())
 
+
+// final step: Create multiple objects and return 30 that are likely to survive
 willSurvive = []
 count = 0
 
