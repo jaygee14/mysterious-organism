@@ -17,59 +17,60 @@ const mockUpStrand = () => {
   return newStrand;
 };
 
-  const pAquerFactory = (_specimenNum, _dna) => {
-   //returns a new object
-    return {
-      _specimenNum,
-      _dna,
+const pAquerFactory = (_specimenNum, _dna) => {
+  //returns a new object
+  return {
+    _specimenNum,
+    _dna,
 
-      // takes in a set of dna, picks a random strand, changes it using returnRandBase() and returns the changed set
-      mutate() {
-        randomPick = Math.floor(Math.random() * 15)
-        const strand = this._dna[randomPick]
-        let newStrand = strand
+    // takes in a set of dna, picks a random strand, changes it using returnRandBase() and returns the changed set
+    mutate() {
+      randomPick = Math.floor(Math.random() * 15)
+      let newStrand = this._dna[randomPick]
 
-        while (strand === newStrand) {
-          newStrand = returnRandBase()
-        }
+      console.log(randomPick)
+      console.log(this._dna)
+      while (this._dna[randomPick] === newStrand) {
+        newStrand = returnRandBase()
+      }
 
-        this._dna[randomPick] = newStrand;
-        return this._dna
-      },
-      
-       //compares two sets of dna and returns how closely identical the two sets are in a percentage
-      compareDNA(strand) {
-        
-        sameDNA = []
-        for (let i = 0; i < 15; i++){
-          if (strand[i] === this._dna[i]) {
-            sameDNA.push(strand[i])
-          }
-        }
+      this._dna[randomPick] = newStrand;
+      return this._dna
+    },
 
-        percentageDNA = (sameDNA.length / 15) * 100
-        console.log(`The two specimen share %${percentageDNA} of their dna.`)
-      },
+    //compares two sets of dna and returns how closely identical the two sets are in a percentage
+    compareDNA(strand) {
 
-      // takes a set of DNA and finds out what percentage of DNA are C and G strands. Returns a boolean if subject is likely to survive
-      willLikelySurvive(){
-        cGPercentage = []
-        for (item of this._dna) {
-          if (item == 'C' || item === 'G') {
-            cGPercentage.push(item)
-          }
-        }
-        if ((cGPercentage.length / 15) * 100 > 60) {
-          return true
-        }
-        else {
-          return false
+      sameDNA = []
+      for (let i = 0; i < 15; i++) {
+        if (strand[i] === this._dna[i]) {
+          sameDNA.push(strand[i])
         }
       }
+
+      percentageDNA = (sameDNA.length / 15) * 100
+      console.log(`The two specimen share %${percentageDNA} of their dna.`)
+    },
+
+    // takes a set of DNA and finds out what percentage of DNA are C and G strands. Returns a boolean if subject is likely to survive
+    willLikelySurvive() {
+      cGPercentage = []
+      for (item of this._dna) {
+        if (item == 'C' || item === 'G') {
+          cGPercentage.push(item)
+        }
+      }
+      if ((cGPercentage.length / 15) * 100 > 60) {
+        return true
+      }
+      else {
+        return false
+      }
     }
-  
-  };
-  
+  }
+
+};
+
 //console.log(idk.mutate('T'))
 
 //const squirrel = pAquerFactory(1, mockUpStrand())
@@ -90,7 +91,3 @@ while (willSurvive.length < 30) {
 }
 
 console.log(willSurvive)
-
-
-
-
